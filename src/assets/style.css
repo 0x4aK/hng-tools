@@ -1,0 +1,28 @@
+body {
+  background: #121212;
+}
+
+img {
+  pointer-events: none;
+}
+
+.leaflet-dragging {
+  cursor: grabbing;
+}
+
+.fullscreen {
+  position: fixed;
+  inset: 0;
+}
+
+.noscript {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: Roboto;
+  font-weight: 800;
+  font-size: 20px;
+}
