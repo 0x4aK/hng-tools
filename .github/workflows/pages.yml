@@ -2,7 +2,7 @@ name: Build Vue and publish on Pages
 
 on: [push]
 
-inputs:
+env:
   username: "0x4aK"
   repo: "hng-tools"
 
@@ -33,4 +33,4 @@ jobs:
         run: |
           git add -f dist/
           git commit -m "Deploy"
-          git push -f https://${{ inputs.username }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ inputs.username }}/${{ inputs.repo }}.git master:gh-pages
+          git push -f https://${{ username }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ username }}/${{ repo }}.git master:gh-pages
