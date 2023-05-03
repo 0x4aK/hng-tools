@@ -1,0 +1,36 @@
+name: Build Vue and publish on Pages
+
+on: [push]
+
+inputs:
+  username: "0x4aK"
+  repo: "hng-tools"
+
+jobs:
+  build:
+    name: Build Vue
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "CI@example.com"
+          git config --global user.name "CI"
+
+      - name: Prepare Pages
+        run: |
+          cp dist/index.html dist/404.html
+
+      - name: Push
+        run: |
+          git add -f dist/
+          git commit -m "Deploy"
+          git push -f https://${{ inputs.username }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ inputs.username }}/${{ inputs.repo }}.git master:gh-pages
