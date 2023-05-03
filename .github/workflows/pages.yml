@@ -33,4 +33,4 @@ jobs:
         run: |
           git add -f dist/
           git commit -m "Deploy"
-          git push -f https://${{ username }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ username }}/${{ repo }}.git master:gh-pages
+          git push -f https://${{ env.username }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.username }}/${{ env.repo }}.git master:gh-pages
