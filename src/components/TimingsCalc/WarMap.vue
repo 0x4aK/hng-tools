@@ -18,10 +18,7 @@
     @update:zoom="setZoom"
     @ready="setLeaflet"
   >
-    <l-tile-layer
-      url="https://l3.live.heroesandgenerals.com/map/004/jpg/diffuse/CampaignMap_Europe_diffuse_zoom{z}.{tile}.jpg"
-      :options="{ bounds, tile: tileTransform }"
-    />
+    <l-tile-layer url="/warmap/zoom{z}/{y}/{x}.jpg" :options="{ bounds, tile: tileTransform }" />
 
     <component v-for="(drawable, index) in drawables" :key="index" :is="drawable" />
   </l-map>
@@ -67,9 +64,6 @@ export default {
     },
     setLeaflet() {
       this.$store.commit("timings/SET_LEAFLET", this.$refs.map.mapObject);
-    },
-    tileTransform(data) {
-      return `${2 ** data.z * data.y + data.x}`.padStart(6, "0");
     },
     ...mapActions("timings", ["setViewById"]),
   },
