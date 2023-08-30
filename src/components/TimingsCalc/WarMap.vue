@@ -18,7 +18,7 @@
     @update:zoom="setZoom"
     @ready="setLeaflet"
   >
-    <l-tile-layer url="/warmap/zoom{z}/{y}/{x}.jpg" :options="{ bounds }" />
+    <l-tile-layer url="./warmap/zoom{z}/{y}/{x}.jpg" :options="{ bounds }" />
 
     <component v-for="(drawable, index) in drawables" :key="index" :is="drawable" />
   </l-map>
